@@ -20,7 +20,7 @@ jQuery(document).ready(function($) {
 	});
 
 	$(window).scroll(function(){
-		if($(window).scrollTop() + 10 > $(document).height() - $(window).height() ){
+		if($(window).scrollTop() + 100 > $(document).height() - $(window).height() ){
 			loadMore();
 		}
 	});
@@ -29,7 +29,7 @@ jQuery(document).ready(function($) {
 
 function loadImg(current, page){
 	$.ajax({
-		url: 'http://api.dribbble.com/shots/'+current+'/?page='+page+'&callback=getDribbble',
+		url: 'http://api.dribbble.com/shots/'+current+'/?page='+page,
 		dataType: 'jsonp',
 		crossDomain: true,
 		jsonpCallback: 'getDribbble'
@@ -39,7 +39,7 @@ function loadImg(current, page){
 function getDribbble(data){
 	for(i = 0; i < 9; i++){
 		var created_datetime = data.shots[i].created_at;
-		var image_src = data.shots[i].image_url;
+		var image_src = data.shots[i].image_teaser_url;
 		var likes = data.shots[i].likes_count;
 		var comments = data.shots[i].comments_count;
 		$("#holder").append($(
@@ -57,8 +57,7 @@ function loadMore() {
 	var page = $("#current_page").val(); 
 	page++;
 	$("#current_page").val(page);
-	loadImg(current, page++);
-	console.log(page);
+	loadImg(current, page);
 }
 
 
