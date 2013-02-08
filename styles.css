@@ -10,7 +10,7 @@ body  {
 a:focus {outline-style: none;}
 a img {border: none;}
 
-a {
+a, nav {
 	-webkit-transition: all .2s ease;
 	-moz-transition: all .2s ease;
 	-o-transition: all .2s ease;
@@ -24,23 +24,24 @@ a:hover{color: #000; text-decoration: none;}
 /*--------------------------------------- NAV ---------------------------------------*/
 
 nav {
-	background: #fb9c00;
+	width: 100%;
+	background: #5490c3;
 	margin-bottom: 20px;
 	padding: 10px 0;
+	position: fixed;
+	text-align: center;
 }
 
+nav.shadow {box-shadow: 0 5px 10px rgba(0, 0, 0, .5);}
+
 	nav ul {
-		width: 960px;
 		margin: 0 auto;
 		padding: 0;
 		list-style: none;
 		overflow: hidden;
 	}
 
-		nav ul li {
-			display: inline-block;
-			float: left;
-		}
+		nav ul li {display: inline-block;}
 
 			nav ul li a, #load_more {
 				display: block;
@@ -48,27 +49,28 @@ nav {
 				border: 1px solid #000;
 				border-radius: 5px;
 				margin-right: 20px;
-				background: #e28d00;
+				background: #6ebcff;
 			}
 
+				nav ul li a:hover,
 				nav ul li a.selected,
 				nav ul li a.selected:hover,
-				#load_more:hover {background: #908000;}
+				#load_more:hover {background: #4678a3; color: #fff;}
 				nav ul li a.selected:hover {cursor: default;}
-				nav ul li a:hover {background: #ff9f00;}
 
 /*--------------------------------------- ITEMS ---------------------------------------*/
 
 #container {
-	width: 760px;
+	width: 990px;
 	margin: 0 auto;
 	text-align: center;
+	padding-top: 75px;
 }
 
 .item {
 	display: inline-block !important;
 	padding: 10px;
-	margin: 0 20px 20px 0;
+	margin: 0 10px 20px 10px;
 	border: 1px solid #000;
 	border-radius: 10px;
 }

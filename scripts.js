@@ -5,8 +5,10 @@ jQuery(document).ready(function($) {
 	loadImg('popular', current_page);
 
 	$("#current_page").val(current_page);
+	$("#current_category").val('');
 
-	$('.nav').click(function(){
+	$('.nav').click(function(e){
+		e.preventDefault();
 		var current = $(this).attr('id');
 		var category = $('#current_category').val();
 		if (current != category) {
@@ -19,9 +21,19 @@ jQuery(document).ready(function($) {
 		}
 	});
 
+	$('#load_more').click(function(e){
+		e.preventDefault();
+		loadMore();
+	});
+
 	$(window).scroll(function(){
-		if($(window).scrollTop() + 100 > $(document).height() - $(window).height() ){
-			loadMore();
+        if ($(window).scrollTop() == $(document).height() - $(window).height()){
+           loadMore();
+		}
+		if ($(window).scrollTop() > 30) {
+			$('nav').addClass('shadow');
+		} else {
+			$('nav').removeClass('shadow');
 		}
 	});
 
@@ -37,7 +49,7 @@ function loadImg(current, page){
 }
 
 function getDribbble(data){
-	for(i = 0; i < 9; i++){
+	for(i = 0; i < 15; i++){
 		var created_datetime = data.shots[i].created_at;
 		var image_src = data.shots[i].image_teaser_url;
 		var likes = data.shots[i].likes_count;
