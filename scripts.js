@@ -28,7 +28,7 @@ jQuery(document).ready(function($) {
 
 	$(window).scroll(function(){
         if ($(window).scrollTop() == $(document).height() - $(window).height()){
-           loadMore();
+        	loadMore();
 		}
 		if ($(window).scrollTop() > 30) {
 			$('nav').addClass('shadow');
@@ -43,7 +43,6 @@ function loadImg(current, page){
 	$.ajax({
 		url: 'http://api.dribbble.com/shots/'+current+'/?page='+page,
 		dataType: 'jsonp',
-		crossDomain: true,
 		jsonpCallback: 'getDribbble'
 	});
 }
